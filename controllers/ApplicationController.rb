@@ -50,10 +50,33 @@ require 'brewery_db'
 		locs.to_json
 	end
 
+	# get '/beers' do
+	# 	brewery_db.search.breweries(q: 'IPA');
+	# end
+
 	get '/breweries/in/:city' do
 		breweries = brewery_db.locations.all(locality: params[:city]);
 		breweries.to_json
 
 	end
+
+	get '/random' do
+		randoms = brewery_db.beers.random;
+		randoms.to_json
+	end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 end
