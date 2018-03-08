@@ -50,20 +50,22 @@ require 'brewery_db'
 		locs.to_json
 	end
 
+	# get '/chicago' do
+	# 	HTTP.get('http://api.brewerydb.com/v2/locations/')
+
 	get '/unitedstates' do
-		# us = brewery_db.breweries.all(country: 'Brazil')
-		# us.to_json
-		HTTP.get('http://api.brewerydb.com/v2/locations/?countryIsoCode=US&key=262ffd433f83ede508850a0a4a1c01fd').body
+
+		HTTP.get('http://api.brewerydb.com/v2/locations/?locality=chicago&key=262ffd433f83ede508850a0a4a1c01fd').body
 	end
 	# get '/beers' do
 	# 	brewery_db.search.breweries(q: 'IPA');
 	# end
 
-	# get '/breweries/in/:city' do
-	# 	breweries = brewery_db.locations.all(locality: params[:city]);
-	# 	breweries.to_json
+	get '/breweries/in/:city' do
+		breweries = brewery_db.locations.all(locality: params[:city])
+		breweries.to_json
 
-	# end
+	end
 
 	# get '/random' do
 	# 	randoms = brewery_db.beers.random;
